@@ -6,7 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home work 09</title>
 </head>
-<body>
+<style>
+    body {
+        background-color: #f7f1e3;
+    }
+
+    #editString {
+        
+    }
     
+    .btn,
+    #editField {
+        display: inline-block;
+        width: 7%;
+        color: rgb(64, 64, 66);
+        background-color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 16px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        line-height: 25px;
+        box-shadow: 4px 6px 8px rgba(0,0,0,.5);
+        margin: 20px 10px;
+        transition: all 1s;
+    }
+
+    .btn:active {
+        cursor: pointer;
+        transform: scale(0.7);
+        transition: all 1s;
+    }
+
+    #editField {
+        width: 15%;
+        display: block;
+        text-align: center;
+        outline: none;
+    }
+
+    .item {
+        margin-left: 15px;
+        color: rgb(255, 63, 52);
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+</style>
+<body>
+    <div onclick="onShowValueHandler(event)" id="editString"></div>
+    <button onclick="onPrintkHandler(event)" class="btn">Print</button>
+    <button onclick="onClearHandler(event)" class="btn">Clear</button>
+    <input onkeypress="onTypeHandler(event)" id="editField" type="text">
+    <p class= "item" class="visible">
+        Edit this field!
+    </p>
+    
+    <script>
+        'use strict'
+        /*
+        Добавте валидацию чтоб с пустым инпутом ничего не добавлялось и под инпутом писалась надпись: "заполните это поле".*/
+
+        const editFld = document.getElementById("editField");
+        console.log(editFld);
+
+        const editStrg = document.getElementById("editString");
+        console.log(editStrg);
+
+        const hiddenText = document.getElementsByClassName("visible");
+        console.log(hiddenText);
+
+        const onPrintkHandler = () => {
+            console.log(editFld.value);
+            let someText = document.getElementById('editField').value;
+            document.getElementById('editString').innerHTML="You entered: "+someText;
+
+            if (editFld.value === '') {
+                editString.innerHTML = '';
+                hiddenText.classList.add('visible');
+            } else {
+                hiddenText.classList.remove('visible');
+            }
+        };
+
+        const onClearHandler = (event) => {
+            editFld.value = '';
+            editString.innerHTML = '';
+        };
+
+        const onTypeHandler = () => {
+
+        }
+
+    </script>
 </body>
 </html>
